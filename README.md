@@ -1,2 +1,2 @@
 # TIerlista
-Tu znajdziesz informacje o naszej tierliscie
+Informacje znajdziesz w zakladce Issues
