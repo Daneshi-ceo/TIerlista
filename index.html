@@ -1,56 +1,238 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Supernova Tiers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tierlista | Minecraft PvP</title>
 <style>
-:root{--bg:#08090d;--card:#11131a;--card2:#171a23;--text:#f4f6fb;--muted:#9aa2b1;--accent:#8b5cf6;--border:#252a36}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(circle at 50% -10%,#252044 0,#08090d 38%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-nav{position:sticky;top:0;z-index:5;background:#08090ddd;backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:16px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900}.logo span{color:var(--accent)}nav a{color:#cbd1dc;text-decoration:none;margin-left:24px;font-size:14px}nav a:hover{color:white}
-.hero{max-width:1100px;margin:auto;padding:105px 24px 70px;text-align:center}.badge{display:inline-block;padding:7px 12px;border:1px solid #3a315f;background:#171329;border-radius:999px;color:#c8b9ff;font-size:13px}
-h1{font-size:clamp(46px,8vw,88px);line-height:.95;margin:22px 0 18px;letter-spacing:-4px}.gradient{background:linear-gradient(90deg,#fff,#a78bfa,#67e8f9);-webkit-background-clip:text;color:transparent}
-.hero p{max-width:650px;margin:0 auto 30px;color:var(--muted);font-size:18px;line-height:1.6}.btn{display:inline-block;padding:13px 19px;border-radius:11px;text-decoration:none;font-weight:800;margin:5px;border:1px solid var(--border);color:white;background:var(--card2)}.btn.primary{background:linear-gradient(135deg,var(--accent),#6d28d9);border:0}
-section{max-width:1100px;margin:auto;padding:55px 24px}.title{font-size:32px;margin:0 0 8px}.sub{color:var(--muted);margin-top:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:linear-gradient(145deg,#141720,#0f1117);border:1px solid var(--border);border-radius:16px;padding:22px}.tier{font-size:26px;font-weight:900}.players{color:var(--muted);margin-top:8px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);overflow:hidden}th,td{text-align:left;padding:15px;border-bottom:1px solid var(--border)}th{color:#aeb6c5;font-size:13px;text-transform:uppercase}
-footer{text-align:center;color:#737b8b;border-top:1px solid var(--border);padding:35px 20px;margin-top:40px}
-@media(max-width:650px){nav div:last-child{display:none}h1{letter-spacing:-2px}.hero{padding-top:75px}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#050505;--card:#101010;--border:#282828;--text:#f5f5f5;--muted:#aaa;--white:#fff}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+a{color:white;text-decoration:none}
+a:hover{opacity:.75}
+header{padding:42px 20px 30px;text-align:center;border-bottom:1px solid var(--border)}
+.logo{width:55px;height:55px;border:1px solid #555;border-radius:15px;display:grid;place-items:center;margin:0 auto 15px;font-size:25px;font-weight:bold}
+header h1{font-size:36px;letter-spacing:3px}
+header p{color:var(--muted);margin-top:8px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:18px 12px;background:#080808;border-bottom:1px solid var(--border)}
+nav button{background:#111;color:#ccc;border:1px solid #333;border-radius:8px;padding:11px 15px;font-size:14px;cursor:pointer}
+nav button:hover{background:#222;color:white}
+nav button.active{background:white;color:black;border-color:white}
+main{max-width:1050px;margin:auto;padding:28px 18px 60px}
+.page{display:none}
+.page.active{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.hero{padding:30px 25px;background:#0c0c0c;border:1px solid var(--border);border-radius:14px;margin-bottom:20px}
+.hero h2{font-size:27px;margin-bottom:8px}
+.hero p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:15px}
+.card h3{font-size:19px;margin-bottom:12px}
+.card p{margin:8px 0;color:#ddd}
+.card ul,.card ol{padding-left:23px}
+.card li{padding:4px 0;color:#ddd}
+.label{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#aaa;border:1px solid #383838;padding:4px 9px;border-radius:5px;margin-bottom:12px}
+.home-link{display:inline-block;margin-top:12px;border:1px solid #444;border-radius:7px;padding:8px 12px}
+.rule{padding:10px 12px;border-bottom:1px solid #252525;color:#ddd}
+.rule:last-child{border-bottom:0}
+.allowed{color:#d7d7d7}
+.banned{color:#ddd}
+.notice{margin-top:15px;padding:15px;border:1px solid #383838;border-left:3px solid white;border-radius:5px;background:#111;color:#ddd}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stat{background:#0b0b0b;border:1px solid #333;border-radius:10px;padding:20px}
+.stat strong{display:block;font-size:28px;color:white}
+.stat span{font-size:13px;color:#aaa}
+footer{text-align:center;border-top:1px solid #222;color:#777;padding:25px 15px;font-size:13px}
+@media(max-width:650px){
+ header h1{font-size:29px}
+ .grid{grid-template-columns:1fr}
+ .hero{padding:22px 18px}
+ .hero h2{font-size:23px}
+ nav{gap:6px}
+ nav button{flex:1 1 42%;padding:10px 6px}
+ .stats{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
-<nav><div class="logo">SUPERNOVA <span>TIERS</span></div><div>
-<a href="#tiers">Tier List</a><a href="#testing">Testing</a><a href="#discord">Discord</a>
-</div></nav>
-<header class="hero">
-<div class="badge">MINECRAFT PvP TIER LIST</div>
-<h1><span class="gradient">SUPERNOVA</span><br>TIERS</h1>
-<p>Profesjonalna lista tierów Minecraft PvP. Sprawdź poziomy graczy, zasady testów i informacje o społeczności.</p>
-<a class="btn primary" href="#tiers">Zobacz tier listę</a>
-<a class="btn" href="#testing">Jak dostać tier?</a>
+
+<header>
+  <div class="logo">T</div>
+  <h1>TIERLISTA</h1>
+  <p>Minecraft PvP • Zasady • Testy • Rankingi</p>
 </header>
-<section id="tiers"><h2 class="title">Tier List</h2><p class="sub">System rankingowy od LT5 do HT1.</p>
-<div class="grid">
-<div class="card"><div class="tier">LT5</div><div class="players">Low Tier 5</div></div>
-<div class="card"><div class="tier">HT5</div><div class="players">High Tier 5</div></div>
-<div class="card"><div class="tier">LT4</div><div class="players">Low Tier 4</div></div>
-<div class="card"><div class="tier">HT4</div><div class="players">High Tier 4</div></div>
-<div class="card"><div class="tier">LT3</div><div class="players">Low Tier 3</div></div>
-<div class="card"><div class="tier">HT3</div><div class="players">High Tier 3</div></div>
-<div class="card"><div class="tier">LT2</div><div class="players">Low Tier 2</div></div>
-<div class="card"><div class="tier">HT2</div><div class="players">High Tier 2</div></div>
-<div class="card"><div class="tier">LT1</div><div class="players">Low Tier 1</div></div>
-<div class="card"><div class="tier">HT1</div><div class="players">High Tier 1</div></div>
-</div></section>
-<section id="testing"><h2 class="title">Testing</h2><p class="sub">Prosty proces zdobywania rangi.</p>
-<table><tr><th>Krok</th><th>Co robisz?</th></tr>
-<tr><td>01</td><td>Zweryfikuj konto i przejdź na kanał podania.</td></tr>
-<tr><td>02</td><td>Dołącz do kolejki testowej.</td></tr>
-<tr><td>03</td><td>Tester przeprowadza pojedynek.</td></tr>
-<tr><td>04</td><td>Otrzymujesz tier oraz wpis w rankingu.</td></tr></table></section>
-<section id="discord"><h2 class="title">Dołącz do społeczności</h2><p class="sub">Wszystkie testy, ogłoszenia i pomoc znajdziesz na Discordzie.</p>
-<a class="btn primary" href="https://discord.com/" target="_blank">Otwórz Discord</a></section>
-<footer>© 2026 Supernova Tiers · Minecraft PvP</footer>
-</body></html>
+
+<nav>
+  <button class="active" data-page="start">Strona główna</button>
+  <button data-page="discord">Regulamin Discord</button>
+  <button data-page="tests">Zasady testów</button>
+  <button data-page="mods">Modyfikacje</button>
+  <button data-page="cooldowns">Cooldowny</button>
+</nav>
+
+<main>
+
+<section class="page active" id="start">
+  <div class="hero">
+    <span class="label">Oficjalna strona</span>
+    <h2>Witaj na Tierliście.</h2>
+    <p>Wszystkie najważniejsze informacje o testach PvP, regulaminie społeczności, dozwolonych modyfikacjach i cooldownach znajdziesz w zakładkach powyżej.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="label">01 / Discord</span>
+      <h3>Regulamin społeczności</h3>
+      <p>Zapoznaj się z zasadami obowiązującymi na naszym Discordzie.</p>
+      <a href="#discord" class="home-link" data-goto="discord">Czytaj regulamin →</a>
+    </div>
+    <div class="card">
+      <span class="label">02 / Testy</span>
+      <h3>Testy i tiery</h3>
+      <p>Sprawdź wymagania na High Testa i zasady apelacji o wyższy tier.</p>
+      <a href="#tests" class="home-link" data-goto="tests">Zasady testów →</a>
+    </div>
+    <div class="card">
+      <span class="label">03 / Mody</span>
+      <h3>Modyfikacje</h3>
+      <p>Sprawdź listę dozwolonych i zabronionych modów.</p>
+      <a href="#mods" class="home-link" data-goto="mods">Sprawdź listę →</a>
+    </div>
+    <div class="card">
+      <span class="label">04 / Cooldowny</span>
+      <h3>Terminy zgłoszeń</h3>
+      <p>Sprawdź przerwy pomiędzy Evalem, High Testem i pozostałymi zgłoszeniami.</p>
+      <a href="#cooldowns" class="home-link" data-goto="cooldowns">Zobacz cooldowny →</a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="discord">
+  <div class="hero">
+    <span class="label">Regulamin / 01</span>
+    <h2>Regulamin Discord</h2>
+    <p>Każdy użytkownik serwera ma obowiązek przestrzegać poniższych zasad.</p>
+  </div>
+  <div class="card">
+    <ol>
+      <li>Na serwerze obowiązuje zakaz nadmiernego używania capslocka, oznaczania i floodowania.</li>
+      <li>Zakazane jest grożenie innym osobom oraz życzenie im krzywdy.</li>
+      <li>Zakazane jest promowanie innych serwerów.</li>
+      <li>Zakazane jest wysyłanie treści 18+, nazistowskich, religijnych itp.</li>
+      <li>Zakazane jest poruszanie kontrowersyjnych tematów, np. religii i polityki.</li>
+      <li>Zakazane jest wyzywanie innych osób i używanie wulgaryzmów.</li>
+      <li>Zakazane jest grożenie atakami DDoS itp.</li>
+      <li>Zakazane są wulgaryzmy w nickach oraz obraźliwe określenia, np. N-word i C-word.</li>
+      <li>Zakazane jest podszywanie się pod innych graczy lub administrację. Podszywanie się będzie karane banem.</li>
+      <li>Każda próba oszukania administracji będzie karana banem.</li>
+      <li>Wyzywanie administracji skutkuje banem.</li>
+      <li>Zakazane jest nadmierne pingowanie administracji.</li>
+      <li>Administracja ma prawo zmieniać regulamin bez wcześniejszego informowania użytkowników.</li>
+      <li>Administracja ma prawo karać za zachowania niewymienione w regulaminie.</li>
+      <li>Na serwerze obowiązuje wzajemny szacunek.</li>
+    </ol>
+    <div class="notice">Regulamin edytowany dnia 30.12.2025 o 23:01.</div>
+  </div>
+</section>
+
+<section class="page" id="tests">
+  <div class="hero">
+    <span class="label">Testy / 02</span>
+    <h2>Zasady testów i High Testów</h2>
+    <p>Przed stworzeniem ticketa upewnij się, że spełniasz wymagania.</p>
+  </div>
+  <div class="card">
+    <h3>1. Jak zdobyć HT3+?</h3>
+    <p>Aby zdobyć HT3+, musisz zrobić ticket o High Testa, posiadać LT3+ oraz stoczyć 2 walki z HT3+ — zależnie od tego, o jaki tier apelujesz.</p>
+    <div class="notice">
+      <strong>Przykład:</strong><br>
+      Gracz X chce testa o LT2. Musi wygrać 2 rundy z HT3 i 2 rundy z LT2.
+    </div>
+  </div>
+  <div class="card">
+    <h3>2. Zasady walki z testerem HT3</h3>
+    <p>Jeśli gracz wygra z testerem HT3, maksymalny tier, jaki może dostać za tę walkę, to LT3.</p>
+    <p>Jeśli zgłosi się o High Testa, tamta walka może zostać uznana do High Testa. W takim przypadku gracz musi zagrać jeszcze jednego fighta z HT3+.</p>
+  </div>
+</section>
+
+<section class="page" id="mods">
+  <div class="hero">
+    <span class="label">Modyfikacje / 03</span>
+    <h2>Dozwolone i zabronione mody</h2>
+    <p>Nie jesteś pewien, czy dana modyfikacja jest dozwolona? Stwórz ticket i zapytaj administrację.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="label">Dozwolone</span>
+      <h3>Dozwolone modyfikacje</h3>
+      <div class="rule allowed">✓ Health Indicators</div>
+      <div class="rule allowed">✓ Marlow Crystal Optimizer</div>
+      <div class="rule allowed">✓ Soup API</div>
+    </div>
+    <div class="card">
+      <span class="label">Zabronione</span>
+      <h3>Zabronione modyfikacje</h3>
+      <div class="rule banned">✕ Inventory Move</div>
+      <div class="rule banned">✕ Minimapa</div>
+      <div class="rule banned">✕ Elytra Swapper</div>
+      <div class="rule banned">✕ Auto Totem</div>
+      <div class="rule banned">✕ FastPlace (Accurate Block Placement)</div>
+      <div class="rule banned">✕ Anti Trap</div>
+      <div class="rule banned">✕ Crystal Optimizer</div>
+      <div class="rule banned">✕ MouseTweaks</div>
+      <div class="rule banned">✕ FastQuit</div>
+      <div class="rule banned">✕ Hero's Anchor Optimizer</div>
+    </div>
+  </div>
+  <div class="notice">📌 Nie jesteś pewien, czy dana modyfikacja jest dozwolona? Stwórz ticket i zapytaj administrację.</div>
+</section>
+
+<section class="page" id="cooldowns">
+  <div class="hero">
+    <span class="label">Cooldowny / 04</span>
+    <h2>Cooldowny i bonusy</h2>
+    <p>Terminy obowiązujące przy kolejnych zgłoszeniach.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>4 dni</strong><span>Eval</span></div>
+    <div class="stat"><strong>8 dni</strong><span>High Test</span></div>
+    <div class="stat"><strong>6 dni</strong><span>Boosterzy</span></div>
+    <div class="stat"><strong>−2 dni</strong><span>Zrobienie TXT — na dowolny tryb</span></div>
+  </div>
+  <div class="notice">W razie wątpliwości, jak liczyć bonus lub cooldown, zapytaj administrację przez ticket.</div>
+</section>
+
+</main>
+
+<footer>
+  <p>Tierlista © Minecraft PvP</p>
+  <p>Szanuj innych i przestrzegaj zasad społeczności.</p>
+</footer>
+
+<script>
+const buttons=document.querySelectorAll('nav button');
+const pages=document.querySelectorAll('.page');
+
+function openPage(id){
+  if(!document.getElementById(id)) return;
+  buttons.forEach(button=>button.classList.toggle('active',button.dataset.page===id));
+  pages.forEach(page=>page.classList.toggle('active',page.id===id));
+  history.replaceState(null,'','#'+id);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buttons.forEach(button=>button.addEventListener('click',()=>openPage(button.dataset.page)));
+
+document.querySelectorAll('[data-goto]').forEach(link=>{
+  link.addEventListener('click',event=>{
+    event.preventDefault();
+    openPage(link.dataset.goto);
+  });
+});
+
+const start=location.hash.substring(1);
+if(start && document.getElementById(start)) openPage(start);
+</script>
+
+</body>
+</html>
