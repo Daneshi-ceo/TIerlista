@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supernova Tiers</title>
+<style>
+:root{--bg:#08090d;--card:#11131a;--card2:#171a23;--text:#f4f6fb;--muted:#9aa2b1;--accent:#8b5cf6;--border:#252a36}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#252044 0,#08090d 38%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+nav{position:sticky;top:0;z-index:5;background:#08090ddd;backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:16px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900}.logo span{color:var(--accent)}nav a{color:#cbd1dc;text-decoration:none;margin-left:24px;font-size:14px}nav a:hover{color:white}
+.hero{max-width:1100px;margin:auto;padding:105px 24px 70px;text-align:center}.badge{display:inline-block;padding:7px 12px;border:1px solid #3a315f;background:#171329;border-radius:999px;color:#c8b9ff;font-size:13px}
+h1{font-size:clamp(46px,8vw,88px);line-height:.95;margin:22px 0 18px;letter-spacing:-4px}.gradient{background:linear-gradient(90deg,#fff,#a78bfa,#67e8f9);-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:0 auto 30px;color:var(--muted);font-size:18px;line-height:1.6}.btn{display:inline-block;padding:13px 19px;border-radius:11px;text-decoration:none;font-weight:800;margin:5px;border:1px solid var(--border);color:white;background:var(--card2)}.btn.primary{background:linear-gradient(135deg,var(--accent),#6d28d9);border:0}
+section{max-width:1100px;margin:auto;padding:55px 24px}.title{font-size:32px;margin:0 0 8px}.sub{color:var(--muted);margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:linear-gradient(145deg,#141720,#0f1117);border:1px solid var(--border);border-radius:16px;padding:22px}.tier{font-size:26px;font-weight:900}.players{color:var(--muted);margin-top:8px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);overflow:hidden}th,td{text-align:left;padding:15px;border-bottom:1px solid var(--border)}th{color:#aeb6c5;font-size:13px;text-transform:uppercase}
+footer{text-align:center;color:#737b8b;border-top:1px solid var(--border);padding:35px 20px;margin-top:40px}
+@media(max-width:650px){nav div:last-child{display:none}h1{letter-spacing:-2px}.hero{padding-top:75px}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SUPERNOVA <span>TIERS</span></div><div>
+<a href="#tiers">Tier List</a><a href="#testing">Testing</a><a href="#discord">Discord</a>
+</div></nav>
+<header class="hero">
+<div class="badge">MINECRAFT PvP TIER LIST</div>
+<h1><span class="gradient">SUPERNOVA</span><br>TIERS</h1>
+<p>Profesjonalna lista tierów Minecraft PvP. Sprawdź poziomy graczy, zasady testów i informacje o społeczności.</p>
+<a class="btn primary" href="#tiers">Zobacz tier listę</a>
+<a class="btn" href="#testing">Jak dostać tier?</a>
+</header>
+<section id="tiers"><h2 class="title">Tier List</h2><p class="sub">System rankingowy od LT5 do HT1.</p>
+<div class="grid">
+<div class="card"><div class="tier">LT5</div><div class="players">Low Tier 5</div></div>
+<div class="card"><div class="tier">HT5</div><div class="players">High Tier 5</div></div>
+<div class="card"><div class="tier">LT4</div><div class="players">Low Tier 4</div></div>
+<div class="card"><div class="tier">HT4</div><div class="players">High Tier 4</div></div>
+<div class="card"><div class="tier">LT3</div><div class="players">Low Tier 3</div></div>
+<div class="card"><div class="tier">HT3</div><div class="players">High Tier 3</div></div>
+<div class="card"><div class="tier">LT2</div><div class="players">Low Tier 2</div></div>
+<div class="card"><div class="tier">HT2</div><div class="players">High Tier 2</div></div>
+<div class="card"><div class="tier">LT1</div><div class="players">Low Tier 1</div></div>
+<div class="card"><div class="tier">HT1</div><div class="players">High Tier 1</div></div>
+</div></section>
+<section id="testing"><h2 class="title">Testing</h2><p class="sub">Prosty proces zdobywania rangi.</p>
+<table><tr><th>Krok</th><th>Co robisz?</th></tr>
+<tr><td>01</td><td>Zweryfikuj konto i podaj IGN.</td></tr>
+<tr><td>02</td><td>Dołącz do kolejki testowej.</td></tr>
+<tr><td>03</td><td>Tester przeprowadza pojedynek.</td></tr>
+<tr><td>04</td><td>Otrzymujesz tier oraz wpis w rankingu.</td></tr></table></section>
+<section id="discord"><h2 class="title">Dołącz do społeczności</h2><p class="sub">Wszystkie testy, ogłoszenia i pomoc znajdziesz na Discordzie.</p>
+<a class="btn primary" href="https://discord.com/" target="_blank">Otwórz Discord</a></section>
+<footer>© 2026 Supernova Tiers · Minecraft PvP</footer>
+</body></html>
